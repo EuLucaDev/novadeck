@@ -13,13 +13,13 @@
 <Wix xmlns="http://wixtoolset.org/schemas/v4/wxs">
   <Package
       Name="NovaDeck"
-      Manufacturer="Learning Machines LLC"
+      Manufacturer="Nova Foods"
       Version="$(var.Version)"
-      UpgradeCode="6F9C69E7-7825-40D2-BF26-C274DA676425"
+      UpgradeCode="70237269-6A82-59EF-9D11-FBE8593A579E"
       Scope="perMachine"
       Compressed="yes"
       Language="1033">
-    <SummaryInformation Description="NovaDeck presentations and slide shows" Manufacturer="Learning Machines LLC" />
+    <SummaryInformation Description="NovaDeck presentations and slide shows" Manufacturer="Nova Foods" />
     <!-- Same-version upgrades let successive pre-releases of one X.Y.Z replace each other
          (MSI versions are numeric, so 1.2.3-rc.1 and 1.2.3-rc.2 are both 1.2.3). -->
     <MajorUpgrade AllowSameVersionUpgrades="yes"
@@ -44,7 +44,7 @@
 
   <Fragment>
     <ComponentGroup Id="NovadeckFiles" Directory="INSTALLFOLDER">
-      <Component Id="NovadeckApp" Guid="D87EA444-41A4-4C19-922E-66D1A29461FF">
+      <Component Id="NovadeckApp" Guid="5779A1BF-B23F-5B2A-A3FA-633DD7260B1F">
         <File Id="NovadeckExe" Source="$(var.BinDir)\novadeck.exe" KeyPath="yes">
           <Shortcut Id="StartMenuShortcut" Directory="ProgramMenuFolder" Name="NovaDeck"
               Description="NovaDeck presentations and slide shows" WorkingDirectory="INSTALLFOLDER" Advertise="yes"
@@ -74,6 +74,9 @@
 
       <Component Id="NovadeckCli">
         <File Id="NovadeckCliExe" Source="$(var.BinDir)\novadeck-cli.exe" KeyPath="yes" />
+      </Component>
+      <Component Id="NovaFoodsLegalNotice">
+        <File Id="NovaFoodsLegalNoticeFile" Source="$(sys.SOURCEFILEDIR)..\..\NOTICE" KeyPath="yes" />
       </Component>
     </ComponentGroup>
   </Fragment>

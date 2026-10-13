@@ -17,7 +17,7 @@ list (author, source, license) is in ATTRIBUTION.md.
 - Ubuntu Light (via the epaint_default_fonts crate) — Ubuntu Font Licence 1.0.
 - Hack, Noto Emoji and the egui emoji icon font (via epaint_default_fonts) — MIT, Bitstream Vera,
   OFL-1.1.
-- Builds made with novafoods-fonts (NOVAFOODS_FONTS_DIR; all official releases) embed the fonts listed in
+- Builds made with craft-fonts (CRAFT_FONTS_DIR; all official releases) embed the fonts listed in
   ATTRIBUTION.md (Inter, Carlito, Caladea, Liberation, Montserrat, Lato, Open Sans, Roboto,
   Merriweather, Playfair Display, Poppins, Nunito Sans, BIZ UD, Shippori Mincho, Noto Sans
   Arabic) under the SIL Open Font License 1.1; their licence texts ship with release packages.
@@ -28,4 +28,4 @@ Code dependencies
   under the Mozilla Public License 2.0; its source is available at
   https://github.com/pdeljanov/Symphonia.
 - The H.264, HEVC, VP9, AV1, Opus, MP4, Matroska and Ogg crates under crates/ are ported from
-  Nova Film (same owner, MIT OR Apache-2.0).
+  FilmCraft (same owner, MIT OR Apache-2.0).
