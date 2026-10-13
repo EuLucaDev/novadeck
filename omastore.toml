@@ -1,0 +1,11 @@
+kind = "app"
+categories = ["Office"]
+icon = "assets/app-icon/hicolor/256x256/apps/br.com.novafoods.novadeck.png"
+
+[linux.x86_64]
+asset = "novadeck-{version}-linux-x86_64.tar.gz"
+exec = "novadeck-{version}-linux-x86_64/bin/novadeck"
+
+[linux.aarch64]
+asset = "novadeck-{version}-linux-aarch64.tar.gz"
+exec = "novadeck-{version}-linux-aarch64/bin/novadeck"

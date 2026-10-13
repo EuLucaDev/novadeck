@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- AppStream metadata (software centres, Flathub). Template: package.sh and the Flatpak
+     manifest substitute @VERSION@ and @DATE@ from Cargo.toml and the build date. -->
+<component type="desktop-application">
+  <id>br.com.novafoods.novadeck</id>
+  <metadata_license>CC0-1.0</metadata_license>
+  <project_license>MIT OR Apache-2.0</project_license>
+  <name>Nova Deck</name>
+  <summary>Create and present slide decks</summary>
+  <developer id="ai.novafoods">
+    <name>Learning Machines LLC</name>
+  </developer>
+  <description>
+    <p>
+      Nova Deck builds presentations and slide shows: themes, layouts, shapes, pictures,
+      tables, charts, transitions and animations. It opens and saves PowerPoint (.pptx) files
+      and presents them full screen with a presenter view.
+    </p>
+    <p>
+      Every action is also a command that the command line and AI agents (through MCP) can drive.
+    </p>
+  </description>
+  <launchable type="desktop-id">br.com.novafoods.novadeck.desktop</launchable>
+  <icon type="stock">br.com.novafoods.novadeck</icon>
+  <!-- Only url types known to appstream 0.15 (Ubuntu 22.04, where CI validates): no vcs-browser. -->
+  <url type="homepage">https://workflowind.agcunae.com/apps/novadeck</url>
+  <url type="bugtracker">https://github.com/EuLucaDev/novadeck/issues</url>
+  <url type="help">https://github.com/EuLucaDev/novadeck</url>
+  <url type="contact">https://workflowind.agcunae.com/inbox</url>
+  <categories>
+    <category>Office</category>
+    <category>Presentation</category>
+  </categories>
+  <keywords>
+    <keyword>presentation</keyword>
+    <keyword>slides</keyword>
+    <keyword>slide show</keyword>
+    <keyword>pptx</keyword>
+  </keywords>
+  <branding>
+    <color type="primary" scheme_preference="light">#ffc9a8</color>
+    <color type="primary" scheme_preference="dark">#b8471f</color>
+  </branding>
+  <requires>
+    <display_length compare="ge">760</display_length>
+  </requires>
+  <supports>
+    <control>keyboard</control>
+    <control>pointing</control>
+  </supports>
+  <provides>
+    <binary>novadeck</binary>
+    <mediatype>application/x-novadeck</mediatype>
+  </provides>
+  <content_rating type="oars-1.1"/>
+  <releases>
+    <release version="@VERSION@" date="@DATE@"/>
+  </releases>
+</component>

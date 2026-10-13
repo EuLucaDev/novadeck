@@ -1,0 +1,34 @@
+[package]
+name = "novadeck-ui-egui"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+description = "NovaDeck egui frontend (PowerPoint-style UI); swappable — nothing below depends on it"
+
+[lints]
+workspace = true
+
+[dependencies]
+novadeck-geom = { workspace = true }
+novadeck-color = { workspace = true }
+novadeck-model = { workspace = true }
+novadeck-fonts = { workspace = true }
+novadeck-text = { workspace = true }
+novadeck-render = { workspace = true }
+novadeck-anim = { workspace = true }
+novadeck-engine = { workspace = true }
+novadeck-media = { workspace = true }
+egui = { workspace = true }
+serde = { workspace = true }
+serde_json = { workspace = true }
+log = { workspace = true }
+
+[target.'cfg(target_arch = "wasm32")'.dependencies]
+js-sys = "0.3"
+
+[dev-dependencies]
+egui_kittest = { workspace = true, features = ["wgpu", "snapshot"] }
+
+[build-dependencies]
+serde_json = { workspace = true }
+toml = "1"

@@ -1,0 +1,20 @@
+[package]
+name = "novadeck-pdf"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+description = "NovaDeck PDF export (krilla): slides, notes pages and handouts with a selectable text layer, links and bookmarks"
+
+[lints]
+workspace = true
+
+[dependencies]
+novadeck-model = { workspace = true }
+novadeck-fonts = { workspace = true }
+novadeck-text = { workspace = true }
+novadeck-render = { workspace = true }
+krilla = { workspace = true }
+kurbo = { workspace = true }
+serde = { workspace = true }
+thiserror = { workspace = true }
+log = { workspace = true }

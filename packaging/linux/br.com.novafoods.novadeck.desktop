@@ -1,0 +1,14 @@
+[Desktop Entry]
+Type=Application
+Name=Nova Deck
+GenericName=Presentation
+Comment=Create and present slide decks
+Exec=novadeck %F
+TryExec=novadeck
+Icon=br.com.novafoods.novadeck
+Terminal=false
+StartupNotify=true
+StartupWMClass=br.com.novafoods.novadeck
+Categories=Office;Presentation;
+MimeType=application/x-novadeck;application/vnd.openxmlformats-officedocument.presentationml.presentation;application/vnd.openxmlformats-officedocument.presentationml.template;application/vnd.openxmlformats-officedocument.presentationml.slideshow;
+Keywords=presentation;slides;slide show;deck;pptx;keynote;powerpoint;

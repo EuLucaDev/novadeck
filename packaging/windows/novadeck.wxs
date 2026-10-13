@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  NovaDeck MSI (WiX Toolset v5: `dotnet tool install -g wix`). Built by package.ps1:
+
+    wix build novadeck.wxs -arch x64 -d Version=1.2.3 -d BinDir=... -d IconPath=... -o out.msi
+
+  Per-machine install into Program Files, a Start Menu shortcut, `.novadeck` owned by
+  NovaDeck, and NovaDeck offered under "Open with" for .pptx/.potx/.ppsx (without taking over
+  the user's default app for them).
+
+  UpgradeCode is fixed for NovaDeck forever (playbook §6); never change it.
+-->
+<Wix xmlns="http://wixtoolset.org/schemas/v4/wxs">
+  <Package
+      Name="NovaDeck"
+      Manufacturer="Learning Machines LLC"
+      Version="$(var.Version)"
+      UpgradeCode="6F9C69E7-7825-40D2-BF26-C274DA676425"
+      Scope="perMachine"
+      Compressed="yes"
+      Language="1033">
+    <SummaryInformation Description="NovaDeck presentations and slide shows" Manufacturer="Learning Machines LLC" />
+    <!-- Same-version upgrades let successive pre-releases of one X.Y.Z replace each other
+         (MSI versions are numeric, so 1.2.3-rc.1 and 1.2.3-rc.2 are both 1.2.3). -->
+    <MajorUpgrade AllowSameVersionUpgrades="yes"
+        DowngradeErrorMessage="A newer version of NovaDeck is already installed." />
+    <MediaTemplate EmbedCab="yes" CompressionLevel="high" />
+
+    <Icon Id="NovadeckIcon.ico" SourceFile="$(var.IconPath)" />
+    <Property Id="ARPPRODUCTICON" Value="NovadeckIcon.ico" />
+    <Property Id="ARPURLINFOABOUT" Value="https://workflowind.agcunae.com/apps/novadeck" />
+    <Property Id="ARPURLUPDATEINFO" Value="https://workflowind.agcunae.com/apps/novadeck" />
+    <Property Id="ARPHELPLINK" Value="https://workflowind.agcunae.com/inbox" />
+
+    <StandardDirectory Id="ProgramFiles6432Folder">
+      <Directory Id="INSTALLFOLDER" Name="NovaDeck" />
+    </StandardDirectory>
+    <StandardDirectory Id="ProgramMenuFolder" />
+
+    <Feature Id="Main" Title="NovaDeck" Level="1">
+      <ComponentGroupRef Id="NovadeckFiles" />
+    </Feature>
+  </Package>
+
+  <Fragment>
+    <ComponentGroup Id="NovadeckFiles" Directory="INSTALLFOLDER">
+      <Component Id="NovadeckApp" Guid="D87EA444-41A4-4C19-922E-66D1A29461FF">
+        <File Id="NovadeckExe" Source="$(var.BinDir)\novadeck.exe" KeyPath="yes">
+          <Shortcut Id="StartMenuShortcut" Directory="ProgramMenuFolder" Name="NovaDeck"
+              Description="NovaDeck presentations and slide shows" WorkingDirectory="INSTALLFOLDER" Advertise="yes"
+              Icon="NovadeckIcon.ico" IconIndex="0" />
+        </File>
+
+        <!-- .novadeck: NovaDeck's own format. -->
+        <ProgId Id="NovaDeck.Presentation" Description="NovaDeck Presentation" Icon="NovadeckExe" IconIndex="0">
+          <Extension Id="novadeck" ContentType="application/x-novadeck">
+            <Verb Id="open" Command="Open" TargetFile="NovadeckExe" Argument="&quot;%1&quot;" />
+          </Extension>
+        </ProgId>
+
+        <!-- "Open with" for PowerPoint formats, without becoming the default. -->
+        <RegistryValue Root="HKLM" Key="Software\Classes\Applications\novadeck.exe" Name="FriendlyAppName" Value="NovaDeck" Type="string" />
+        <RegistryValue Root="HKLM" Key="Software\Classes\Applications\novadeck.exe\shell\open\command" Value="&quot;[#NovadeckExe]&quot; &quot;%1&quot;" Type="string" />
+        <RegistryValue Root="HKLM" Key="Software\Classes\Applications\novadeck.exe\SupportedTypes" Name=".novadeck" Value="" Type="string" />
+        <RegistryValue Root="HKLM" Key="Software\Classes\Applications\novadeck.exe\SupportedTypes" Name=".pptx" Value="" Type="string" />
+        <RegistryValue Root="HKLM" Key="Software\Classes\Applications\novadeck.exe\SupportedTypes" Name=".potx" Value="" Type="string" />
+        <RegistryValue Root="HKLM" Key="Software\Classes\Applications\novadeck.exe\SupportedTypes" Name=".ppsx" Value="" Type="string" />
+        <RegistryValue Root="HKLM" Key="Software\Classes\.pptx\OpenWithProgids" Name="NovaDeck.Presentation" Value="" Type="string" />
+        <RegistryValue Root="HKLM" Key="Software\Classes\.potx\OpenWithProgids" Name="NovaDeck.Presentation" Value="" Type="string" />
+        <RegistryValue Root="HKLM" Key="Software\Classes\.ppsx\OpenWithProgids" Name="NovaDeck.Presentation" Value="" Type="string" />
+
+        <RegistryValue Root="HKLM" Key="Software\Microsoft\Windows\CurrentVersion\App Paths\novadeck.exe" Value="[#NovadeckExe]" Type="string" />
+      </Component>
+
+      <Component Id="NovadeckCli">
+        <File Id="NovadeckCliExe" Source="$(var.BinDir)\novadeck-cli.exe" KeyPath="yes" />
+      </Component>
+    </ComponentGroup>
+  </Fragment>
+</Wix>

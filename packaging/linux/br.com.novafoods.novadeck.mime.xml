@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mime-info xmlns="http://www.freedesktop.org/standards/shared-mime-info">
+  <mime-type type="application/x-novadeck">
+    <comment>Nova Deck presentation</comment>
+    <sub-class-of type="application/zip"/>
+    <glob pattern="*.novadeck"/>
+    <icon name="br.com.novafoods.novadeck"/>
+  </mime-type>
+</mime-info>

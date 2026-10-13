@@ -1,0 +1,19 @@
+[package]
+name = "novadeck-cli"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+description = "NovaDeck on the command line: render, convert, run commands, inspect, and serve MCP"
+publish = false
+
+[lints]
+workspace = true
+
+[[bin]]
+name = "novadeck-cli"
+path = "src/main.rs"
+
+[dependencies]
+novadeck-engine = { workspace = true }
+novadeck-mcp = { workspace = true }
+serde_json = { workspace = true }

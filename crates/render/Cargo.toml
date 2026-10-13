@@ -1,0 +1,27 @@
+[package]
+name = "novadeck-render"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+description = "NovaDeck renderer: slides, layouts and masters to pixels (vello_cpu): fills, outlines, effects, pictures, text, tables, charts"
+
+[lints]
+workspace = true
+
+[dependencies]
+novadeck-geom = { workspace = true }
+novadeck-color = { workspace = true }
+novadeck-metafile = { workspace = true }
+novadeck-model = { workspace = true }
+novadeck-anim = { workspace = true }
+novadeck-fonts = { workspace = true }
+novadeck-text = { workspace = true }
+vello_cpu = { workspace = true }
+vello_common = { workspace = true }
+image = { workspace = true }
+log = { workspace = true }
+kurbo = { workspace = true }
+skrifa = { workspace = true }
+
+[target.'cfg(not(target_arch = "wasm32"))'.dependencies]
+vello_cpu = { workspace = true, features = ["multithreading"] }

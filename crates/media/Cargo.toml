@@ -1,0 +1,25 @@
+[package]
+name = "novadeck-media"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+description = "NovaDeck media: probing, audio decoding (MP3, AAC/M4A, WAV, AIFF, FLAC, ALAC, Vorbis, Opus) to f32 PCM, H.264/HEVC/VP9/AV1 video decoding, poster frames, trim/fade/volume and the playback mixer and clock"
+
+[lints]
+workspace = true
+
+[dependencies]
+novadeck-isobmff = { workspace = true }
+novadeck-matroska = { workspace = true }
+novadeck-ogg = { workspace = true }
+novadeck-opus = { workspace = true }
+novadeck-h264 = { workspace = true }
+novadeck-hevc = { workspace = true }
+novadeck-vp9 = { workspace = true }
+novadeck-av1 = { workspace = true }
+thiserror = { workspace = true }
+log = { workspace = true }
+image = { workspace = true }
+# Audio decoding for the formats we have no decoder of our own for (MPL-2.0, used unmodified,
+# as in NovaFilm).
+symphonia = { version = "0.5.5", default-features = false, features = ["aac", "adpcm", "alac", "flac", "mp1", "mp2", "mp3", "pcm", "vorbis", "wav", "aiff", "caf", "ogg", "mkv", "isomp4"] }

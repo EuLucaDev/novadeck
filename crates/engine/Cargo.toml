@@ -1,0 +1,27 @@
+[package]
+name = "novadeck-engine"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+description = "NovaDeck engine: sessions, undo history, selection, the command registry every frontend dispatches through, and pointer tools"
+
+[lints]
+workspace = true
+
+[dependencies]
+novadeck-geom = { workspace = true }
+novadeck-color = { workspace = true }
+novadeck-model = { workspace = true }
+novadeck-fonts = { workspace = true }
+novadeck-text = { workspace = true }
+novadeck-render = { workspace = true }
+novadeck-pdf = { workspace = true }
+novadeck-format = { workspace = true }
+novadeck-pptx = { workspace = true }
+novadeck-media = { workspace = true }
+serde = { workspace = true }
+serde_json = { workspace = true }
+i_overlay = { workspace = true }
+thiserror = { workspace = true }
+log = { workspace = true }
+image = { workspace = true }
