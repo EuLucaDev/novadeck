@@ -1,11 +1,11 @@
 //! Morph of an outline: a frame shape whose geometry turns from the old shape's into its own (a
 //! circle into a star), with the points aligned by `novadeck_geom::morph`.
 
+use kurbo::Vec2;
 use novadeck_geom::Xfrm;
 use novadeck_geom::morph::{Fade, GeometryMorph};
 use novadeck_geom::preset::Geometry;
 use novadeck_model::{Geom, Shape, ShapeId};
-use kurbo::Vec2;
 
 use crate::shape_geometry;
 

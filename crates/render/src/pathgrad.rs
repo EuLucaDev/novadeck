@@ -11,8 +11,8 @@
 
 use std::sync::Arc;
 
-use novadeck_color::Rgba;
 use kurbo::{Affine, BezPath, PathEl, Point, Rect};
+use novadeck_color::Rgba;
 use vello_cpu::{Pixmap, RenderContext, peniko};
 
 /// Longest side of the rasterised gradient, in pixels (bilinear sampling smooths the rest).

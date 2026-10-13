@@ -1,8 +1,8 @@
 //! The slide thumbnail pane (Normal view): numbered thumbnails grouped by section, selection,
 //! drag-to-reorder, and the slide context menu.
 
-use novadeck_engine::Target;
 use egui::{Align2, Color32, CornerRadius, Rect, Sense, Stroke, Ui, pos2, vec2};
+use novadeck_engine::Target;
 use serde_json::json;
 
 use crate::SlideApp;

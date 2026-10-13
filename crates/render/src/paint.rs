@@ -1,11 +1,11 @@
 //! Fills: solid, gradient, picture and pattern paints.
 
+use kurbo::{Affine, BezPath, Point, Rect, Shape as _};
 use novadeck_color::Rgba;
 use novadeck_geom::preset::FillMode;
 use novadeck_model::resolve::Ctx;
 use novadeck_model::style::{ColorRef, Fill, GradientShape, PictureFill, PictureMode};
 use novadeck_model::{PhType, Presentation};
-use kurbo::{Affine, BezPath, Point, Rect, Shape as _};
 use vello_cpu::{RenderContext, peniko};
 
 use crate::{color, images, shade};

@@ -15,7 +15,7 @@ use std::sync::Arc;
 use skrifa::raw::TableProvider;
 
 use crate::script::{ScriptTag, script_of};
-use crate::{NOVAFOODS_FONTS, FontDb, FontFace};
+use crate::{FontDb, FontFace, NOVAFOODS_FONTS};
 
 /// Variation selector 15: text presentation.
 const TEXT_SELECTOR: char = '\u{FE0E}';

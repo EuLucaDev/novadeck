@@ -2,11 +2,11 @@
 //! the outlines of the selected shapes. The result takes the formatting of the first selected
 //! shape, like PowerPoint.
 
-use novadeck_geom::{PathEl, Rect, Xfrm};
-use novadeck_model::{CustomPath, Geom, Shape, ShapeId, ShapeKind};
 use i_overlay::core::fill_rule::FillRule;
 use i_overlay::core::overlay_rule::OverlayRule;
 use i_overlay::float::single::SingleFloatOverlay;
+use novadeck_geom::{PathEl, Rect, Xfrm};
+use novadeck_model::{CustomPath, Geom, Shape, ShapeId, ShapeKind};
 use serde_json::{Value, json};
 
 use super::*;

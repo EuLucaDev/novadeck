@@ -10,10 +10,6 @@
 
 use std::collections::HashMap;
 
-use novadeck_fonts::FontDb;
-use novadeck_model::Presentation;
-use novadeck_model::text::Action as ClickAction;
-use novadeck_render::{PlacedText, RenderOpts};
 use krilla::action::{Action, LinkAction};
 use krilla::annotation::{Annotation, LinkAnnotation, Target};
 use krilla::destination::XyzDestination;
@@ -27,6 +23,10 @@ use krilla::paint::Fill;
 use krilla::surface::Surface;
 use krilla::text::{Font, GlyphId, KrillaGlyph, TextDirection};
 use kurbo::{Affine, Rect};
+use novadeck_fonts::FontDb;
+use novadeck_model::Presentation;
+use novadeck_model::text::Action as ClickAction;
+use novadeck_render::{PlacedText, RenderOpts};
 use serde::{Deserialize, Serialize};
 
 #[derive(Debug, thiserror::Error)]

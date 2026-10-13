@@ -4,9 +4,9 @@
 //! is mapped through the warp, so straight glyph edges bend with the guides. Underlines and
 //! highlights are warped the same way.
 
+use kurbo::{Affine, BezPath, PathEl, Point, Rect, Shape as _};
 use novadeck_geom::warp::{Warp, WarpLine};
 use novadeck_text::{GlyphRun, TextLayout};
-use kurbo::{Affine, BezPath, PathEl, Point, Rect, Shape as _};
 use vello_cpu::{RenderContext, peniko};
 
 use crate::{ParaState, color, glyph, scale_of, text_transform};

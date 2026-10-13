@@ -1,11 +1,11 @@
 //! Slide Show: full-screen playback with transitions and animations (`novadeck-anim`),
 //! keyboard/mouse navigation, pen, black/white screens, presenter view and rehearsed timings.
 
+use egui::{Align2, Color32, CornerRadius, Mesh, Pos2, Rect, Sense, Stroke, TextureHandle, Ui, pos2, vec2};
 use novadeck_anim::{Layer, LinkJump, ShowAction, ShowState, Source, Timeline};
 use novadeck_model::text::Hyperlink;
 use novadeck_model::{Presentation, ShapeId};
 use novadeck_render::{ParaState, RenderOpts, ShapeState};
-use egui::{Align2, Color32, CornerRadius, Mesh, Pos2, Rect, Sense, Stroke, TextureHandle, Ui, pos2, vec2};
 use serde_json::json;
 
 use crate::SlideApp;

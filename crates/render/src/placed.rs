@@ -1,11 +1,11 @@
 //! Laid-out text and click areas of a slide, in slide coordinates, without drawing — for exports
 //! that put real text over a raster (PDF text layer, links) and for text extraction.
 
+use kurbo::{Affine, Rect};
 use novadeck_model::resolve::{self, Ctx};
 use novadeck_model::text::{Hyperlink, TextBody};
 use novadeck_model::{Presentation, Shape, ShapeKind};
 use novadeck_text::{Opts, TextLayout};
-use kurbo::{Affine, Rect};
 
 use crate::{SlideFields, shape_geometry, table};
 

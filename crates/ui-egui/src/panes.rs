@@ -1,8 +1,8 @@
 //! Task panes on the right: Format Shape, Format Background, Animation, Selection, Comments and
 //! Design Ideas.
 
-use novadeck_model::{AnimClass, AnimStart, Fill, ShapeKind};
 use egui::{Align2, Color32, CornerRadius, Rect, Sense, Stroke, Ui, pos2, vec2};
+use novadeck_model::{AnimClass, AnimStart, Fill, ShapeKind};
 use serde_json::{Value, json};
 
 use crate::icons::{self, Icon};

@@ -7,11 +7,11 @@
 //! The editor renders only what it needs: the slide, grown to take in the drawing that spills off
 //! it and is in view ([`pasteboard_region`]). A slide with nothing off it costs what it always did.
 
+use kurbo::Rect;
 use novadeck_geom::Xfrm;
 use novadeck_model::resolve::{self, Ctx};
 use novadeck_model::style::{Effects, Line};
 use novadeck_model::{Presentation, Shape, ShapeKind};
-use kurbo::Rect;
 
 use crate::MAX_SIDE;
 

@@ -120,9 +120,7 @@ fn services() -> Services {
             Some(out)
         })),
         // Media is mixed and clocked by the output device; `NOVADECK_NO_AUDIO` plays silently.
-        audio_out: std::env::var_os("NOVADECK_NO_AUDIO")
-            .is_none()
-            .then(|| Box::new(audio::CpalOut::default()) as Box<dyn novadeck_media::AudioOut>),
+        audio_out: std::env::var_os("NOVADECK_NO_AUDIO").is_none().then(|| Box::new(audio::CpalOut::default()) as Box<dyn novadeck_media::AudioOut>),
         ..Default::default()
     }
 }

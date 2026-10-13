@@ -1,12 +1,12 @@
 //! Charts: title, plot area with axes and gridlines, series marks, legend.
 
+use kurbo::{Affine, BezPath, Point, Rect, Shape as _};
 use novadeck_color::{ColorTransform, Rgba, SchemeSlot};
 use novadeck_model::Shape;
 use novadeck_model::chart::{Chart, ChartType, axis_scale};
 use novadeck_model::resolve::Ctx;
 use novadeck_model::style::{ColorRef, Fill};
 use novadeck_model::text::{Align, Anchor, Bullet, TextBody};
-use kurbo::{Affine, BezPath, Point, Rect, Shape as _};
 use vello_cpu::RenderContext;
 
 use crate::color;

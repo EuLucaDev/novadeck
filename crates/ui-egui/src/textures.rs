@@ -7,10 +7,10 @@
 use std::collections::HashMap;
 use std::sync::Arc;
 
+use egui::{ColorImage, TextureHandle, TextureOptions};
 use novadeck_geom::Rect;
 use novadeck_model::{Master, Presentation, ShapeId, Slide};
 use novadeck_render::{Image, Region, RenderOpts};
-use egui::{ColorImage, TextureHandle, TextureOptions};
 
 #[derive(Clone, PartialEq)]
 struct Key {

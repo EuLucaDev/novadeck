@@ -1,5 +1,6 @@
 //! Tables: cell fills from the table style (or overrides), borders, and cell text.
 
+use kurbo::{Affine, BezPath, Rect, Shape as _};
 use novadeck_color::{ColorTransform, Rgba, SchemeSlot};
 use novadeck_model::resolve::Ctx;
 use novadeck_model::style::{ColorRef, Fill};
@@ -7,7 +8,6 @@ use novadeck_model::table::{Cell, Table, TableBorder, TablePart, TablePartStyle,
 use novadeck_model::text::{Anchor, TextBody, TextDir};
 use novadeck_model::{Presentation, Shape};
 use novadeck_text::Fields;
-use kurbo::{Affine, BezPath, Rect, Shape as _};
 use vello_cpu::{RenderContext, peniko};
 
 use crate::color;

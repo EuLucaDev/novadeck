@@ -31,6 +31,7 @@ mod warp;
 use std::collections::HashMap;
 use std::sync::Arc;
 
+use kurbo::{Affine, BezPath, PathEl, Point, Rect, Shape as _, Vec2};
 use novadeck_color::Rgba;
 use novadeck_fonts::FontDb;
 use novadeck_geom::preset::{self, FillMode, Geometry, SubPath};
@@ -40,15 +41,14 @@ use novadeck_model::text::TextBody;
 use novadeck_model::{Geom, PhType, Presentation, Shape, ShapeId, ShapeKind, Slide};
 use novadeck_text::datetime::{self, DateTime};
 use novadeck_text::{Fields, Opts};
-use kurbo::{Affine, BezPath, PathEl, Point, Rect, Shape as _, Vec2};
 use vello_common::filter_effects::{EdgeMode, Filter, FilterPrimitive};
 use vello_cpu::{RenderContext, Resources, peniko};
 
-pub use novadeck_anim::{transition_frame, transition_layers, uses_slide_parts};
 pub use extent::{Region, TILE, layout_extent, pasteboard_region, slide_extent};
 pub use images::{decode as decode_image, gif_frame};
 pub use morph_path::PathMorph;
 pub use morph_text::TextMorph;
+pub use novadeck_anim::{transition_frame, transition_layers, uses_slide_parts};
 pub use placed::{Placed, PlacedLink, PlacedText, place_slide};
 pub use table::row_heights as table_row_heights;
 pub use transition::{SlideParts, composite_transition, render_transition};
@@ -1057,10 +1057,7 @@ impl Renderer {
                 Some(c) => {
                     ctx.set_transform(Affine::IDENTITY);
                     ctx.push_layer(None, None, Some(c.a as f32 / 255.0), None, None);
-                    std::borrow::Cow::Owned(Line {
-                        fill: Some(Fill::solid(novadeck_model::style::ColorRef::rgb(c.with_alpha(255)))),
-                        ..line.clone()
-                    })
+                    std::borrow::Cow::Owned(Line { fill: Some(Fill::solid(novadeck_model::style::ColorRef::rgb(c.with_alpha(255)))), ..line.clone() })
                 }
                 None => std::borrow::Cow::Borrowed(&line),
             };

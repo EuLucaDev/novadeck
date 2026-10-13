@@ -315,8 +315,7 @@ fn picture(s: &mut Session, p: &Value) -> Result<Value> {
         d.selected_shapes()
             .into_iter()
             .find(|x| {
-                x.ph_type()
-                    .is_some_and(|k| matches!(k, novadeck_model::PhType::Picture | novadeck_model::PhType::Obj | novadeck_model::PhType::Body))
+                x.ph_type().is_some_and(|k| matches!(k, novadeck_model::PhType::Picture | novadeck_model::PhType::Obj | novadeck_model::PhType::Body))
                     && x.text.as_ref().is_none_or(|t| t.is_empty())
             })
             .map(|x| (x.id, xfrm_of(&d.doc, &d.selection, x)))

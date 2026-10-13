@@ -231,8 +231,7 @@ fn blend_ends_match_the_slides_and_mixes_backdrops() {
     };
     let mut p = deck_with(vec![sh.clone()]);
     let mut dark = (*p.slides[0]).clone();
-    dark.background =
-        Some(novadeck_model::Background::Fill { fill: novadeck_model::Fill::solid(ColorRef::rgb(novadeck_color::Rgba::rgb(0, 0, 0))) });
+    dark.background = Some(novadeck_model::Background::Fill { fill: novadeck_model::Fill::solid(ColorRef::rgb(novadeck_color::Rgba::rgb(0, 0, 0))) });
     p.slides.push(std::sync::Arc::new(dark));
     let o = RenderOpts { scale: 0.5, ..Default::default() };
     let shapes = vec![(sh, false)];

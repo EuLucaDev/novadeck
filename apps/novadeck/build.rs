@@ -16,7 +16,7 @@ fn main() {
     res.set_icon("../../assets/app-icon/novadeck.ico")
         .set("ProductName", "Nova Deck")
         .set("FileDescription", "Nova Deck presentations")
-        .set("CompanyName", "Learning Machines LLC")
+        .set("CompanyName", "Nova Foods")
         .set("LegalCopyright", "Copyright (c) the Nova Deck authors. MIT OR Apache-2.0.")
         .set("OriginalFilename", "novadeck.exe")
         .set("InternalName", "novadeck");

@@ -10,8 +10,8 @@
 
 use std::sync::Arc;
 
-use novadeck_color::Rgba;
 use kurbo::{Affine, BezPath, Point, Rect};
+use novadeck_color::Rgba;
 use vello_cpu::{Pixmap, RenderContext, peniko};
 
 /// Longest side of the rasterised lighting, in pixels.

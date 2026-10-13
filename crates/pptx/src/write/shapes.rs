@@ -578,11 +578,8 @@ fn media(w: &mut W, x: &mut Exp, o: &mut Out, id: u32, s: &Shape, m: &novadeck_m
     w.open0("p:nvPicPr");
     let mut s2 = s.clone();
     if s2.click.is_none() {
-        s2.click = Some(novadeck_model::text::Hyperlink {
-            action: novadeck_model::text::Action::PlayMedia,
-            tooltip: String::new(),
-            highlight_click: false,
-        });
+        s2.click =
+            Some(novadeck_model::text::Hyperlink { action: novadeck_model::text::Action::PlayMedia, tooltip: String::new(), highlight_click: false });
     }
     cnvpr(w, x, o, id, &s2);
     w.open0("p:cNvPicPr");

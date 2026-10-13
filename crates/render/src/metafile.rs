@@ -10,9 +10,9 @@
 use std::collections::HashMap;
 use std::sync::Arc;
 
+use kurbo::{Affine, BezPath, Rect, Shape as _};
 use novadeck_fonts::{FontDb, FontFace};
 use novadeck_metafile::{HAlign, Item, PlacedItem, Text, Tile, VAlign};
-use kurbo::{Affine, BezPath, Rect, Shape as _};
 use skrifa::MetadataProvider as _;
 use vello_cpu::{Pixmap, RenderContext, Resources, peniko};
 
