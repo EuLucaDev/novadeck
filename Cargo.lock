@@ -2483,20 +2483,31 @@ checksum = "2bf50223579dc7cdcfb3bfcacf7069ff68243f8c363f62ffa99cf000a6b9c451"
 [[package]]
 name = "nova-live"
 version = "0.1.0"
-source = "git+https://github.com/EuLucaDev/nova-live?rev=73c86a72931074d3a0b55997ac0d9dc64237cfa1#73c86a72931074d3a0b55997ac0d9dc64237cfa1"
+source = "git+https://github.com/EuLucaDev/nova-live?rev=4bae300bfa60a31ef62f1d9f28a4cd067b46ed7c#4bae300bfa60a31ef62f1d9f28a4cd067b46ed7c"
 dependencies = [
  "base64",
  "getrandom 0.4.3",
+ "nova-live-macos",
  "rustls",
  "serde",
  "serde_json",
  "tungstenite",
  "webpki-roots",
+ "windows-registry",
+]
+
+[[package]]
+name = "nova-live-macos"
+version = "0.1.0"
+source = "git+https://github.com/EuLucaDev/nova-live?rev=4bae300bfa60a31ef62f1d9f28a4cd067b46ed7c#4bae300bfa60a31ef62f1d9f28a4cd067b46ed7c"
+dependencies = [
+ "objc2 0.6.5",
+ "objc2-foundation 0.3.2",
 ]
 
 [[package]]
 name = "novadeck"
-version = "0.7.0"
+version = "0.8.0"
 dependencies = [
  "arboard",
  "cpal",
@@ -2515,7 +2526,7 @@ dependencies = [
 
 [[package]]
 name = "novadeck-anim"
-version = "0.7.0"
+version = "0.8.0"
 dependencies = [
  "novadeck-geom",
  "novadeck-model",
@@ -2524,7 +2535,7 @@ dependencies = [
 
 [[package]]
 name = "novadeck-av1"
-version = "0.7.0"
+version = "0.8.0"
 dependencies = [
  "novadeck-bitstream",
  "rayon",
@@ -2533,14 +2544,14 @@ dependencies = [
 
 [[package]]
 name = "novadeck-bitstream"
-version = "0.7.0"
+version = "0.8.0"
 dependencies = [
  "proptest",
 ]
 
 [[package]]
 name = "novadeck-cli"
-version = "0.7.0"
+version = "0.8.0"
 dependencies = [
  "novadeck-engine",
  "novadeck-mcp",
@@ -2549,14 +2560,14 @@ dependencies = [
 
 [[package]]
 name = "novadeck-color"
-version = "0.7.0"
+version = "0.8.0"
 dependencies = [
  "serde",
 ]
 
 [[package]]
 name = "novadeck-engine"
-version = "0.7.0"
+version = "0.8.0"
 dependencies = [
  "i_overlay",
  "image",
@@ -2578,7 +2589,7 @@ dependencies = [
 
 [[package]]
 name = "novadeck-fonts"
-version = "0.7.0"
+version = "0.8.0"
 dependencies = [
  "epaint_default_fonts",
  "harfrust 0.13.3",
@@ -2590,7 +2601,7 @@ dependencies = [
 
 [[package]]
 name = "novadeck-format"
-version = "0.7.0"
+version = "0.8.0"
 dependencies = [
  "novadeck-model",
  "serde",
@@ -2601,7 +2612,7 @@ dependencies = [
 
 [[package]]
 name = "novadeck-geom"
-version = "0.7.0"
+version = "0.8.0"
 dependencies = [
  "kurbo",
  "serde",
@@ -2609,7 +2620,7 @@ dependencies = [
 
 [[package]]
 name = "novadeck-h264"
-version = "0.7.0"
+version = "0.8.0"
 dependencies = [
  "novadeck-bitstream",
  "rayon",
@@ -2618,7 +2629,7 @@ dependencies = [
 
 [[package]]
 name = "novadeck-hevc"
-version = "0.7.0"
+version = "0.8.0"
 dependencies = [
  "novadeck-bitstream",
  "rayon",
@@ -2627,7 +2638,7 @@ dependencies = [
 
 [[package]]
 name = "novadeck-isobmff"
-version = "0.7.0"
+version = "0.8.0"
 dependencies = [
  "novadeck-bitstream",
  "thiserror 2.0.21",
@@ -2635,11 +2646,11 @@ dependencies = [
 
 [[package]]
 name = "novadeck-matroska"
-version = "0.7.0"
+version = "0.8.0"
 
 [[package]]
 name = "novadeck-mcp"
-version = "0.7.0"
+version = "0.8.0"
 dependencies = [
  "log",
  "novadeck-engine",
@@ -2649,7 +2660,7 @@ dependencies = [
 
 [[package]]
 name = "novadeck-media"
-version = "0.7.0"
+version = "0.8.0"
 dependencies = [
  "image",
  "log",
@@ -2667,7 +2678,7 @@ dependencies = [
 
 [[package]]
 name = "novadeck-metafile"
-version = "0.7.0"
+version = "0.8.0"
 dependencies = [
  "kurbo",
  "thiserror 2.0.21",
@@ -2675,7 +2686,7 @@ dependencies = [
 
 [[package]]
 name = "novadeck-model"
-version = "0.7.0"
+version = "0.8.0"
 dependencies = [
  "novadeck-color",
  "novadeck-geom",
@@ -2687,15 +2698,15 @@ dependencies = [
 
 [[package]]
 name = "novadeck-ogg"
-version = "0.7.0"
+version = "0.8.0"
 
 [[package]]
 name = "novadeck-opus"
-version = "0.7.0"
+version = "0.8.0"
 
 [[package]]
 name = "novadeck-pdf"
-version = "0.7.0"
+version = "0.8.0"
 dependencies = [
  "krilla",
  "kurbo",
@@ -2710,7 +2721,7 @@ dependencies = [
 
 [[package]]
 name = "novadeck-pptx"
-version = "0.7.0"
+version = "0.8.0"
 dependencies = [
  "image",
  "log",
@@ -2726,7 +2737,7 @@ dependencies = [
 
 [[package]]
 name = "novadeck-render"
-version = "0.7.0"
+version = "0.8.0"
 dependencies = [
  "image",
  "kurbo",
@@ -2745,7 +2756,7 @@ dependencies = [
 
 [[package]]
 name = "novadeck-text"
-version = "0.7.0"
+version = "0.8.0"
 dependencies = [
  "chrono",
  "novadeck-color",
@@ -2759,7 +2770,7 @@ dependencies = [
 
 [[package]]
 name = "novadeck-ui-egui"
-version = "0.7.0"
+version = "0.8.0"
 dependencies = [
  "egui",
  "egui_kittest",
@@ -2782,7 +2793,7 @@ dependencies = [
 
 [[package]]
 name = "novadeck-vp9"
-version = "0.7.0"
+version = "0.8.0"
 dependencies = [
  "novadeck-bitstream",
  "rayon",
@@ -2791,7 +2802,7 @@ dependencies = [
 
 [[package]]
 name = "novadeck-web"
-version = "0.7.0"
+version = "0.8.0"
 dependencies = [
  "eframe",
  "egui",
@@ -5474,6 +5485,17 @@ dependencies = [
 ]
 
 [[package]]
+name = "windows-registry"
+version = "0.6.1"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "02752bf7fbdcce7f2a27a742f798510f3e5ad88dbe84871e5168e2120c3d5720"
+dependencies = [
+ "windows-link",
+ "windows-result 0.4.1",
+ "windows-strings",
+]
+
+[[package]]
 name = "windows-result"
 version = "0.1.2"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -5906,7 +5928,7 @@ checksum = "9440ea3e5aeabb0ac63af70daf835274065238cdd0cec83418f417eae38bacee"
 
 [[package]]
 name = "xtask"
-version = "0.7.0"
+version = "0.8.0"
 dependencies = [
  "serde_json",
 ]
