@@ -7,14 +7,14 @@
 #![forbid(unsafe_code)]
 
 pub mod backstage;
-#[cfg(not(target_arch = "wasm32"))]
-pub mod live_ui;
 pub mod canvas;
 pub mod control;
 pub mod credits;
 pub mod dialogs;
 pub mod fillui;
 pub mod icons;
+#[cfg(not(target_arch = "wasm32"))]
+pub mod live_ui;
 pub mod media;
 pub mod menus;
 pub mod panes;
