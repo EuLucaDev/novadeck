@@ -99,6 +99,20 @@ pub fn show(app: &mut SlideApp, ui: &mut Ui) {
     app.slide_rect = Some(slide_rect);
     app.canvas_scale = scale;
     let xf = Xf { origin: slide_rect.min, scale };
+    // Colaboração: o mouse vai em coordenadas do slide, e só aparece para quem está no mesmo slide.
+    #[cfg(not(target_arch = "wasm32"))]
+    if app.session.live_on_screen() {
+        let slide = app.session.active().and_then(|d| d.current_slide()).map(|s| format!("slide:{:?}", s.id)).unwrap_or_default();
+        app.live.view = Some(crate::live_ui::LiveView::new(
+            avail,
+            slide,
+            move |p| {
+                let q = xf.to_slide(p);
+                (q.x, q.y)
+            },
+            move |x, y| xf.to_screen(Point::new(x, y)),
+        ));
+    }
     let painter = ui.painter_at(avail);
     // Shadow + slide.
     painter.rect_filled(slide_rect.translate(vec2(0.0, 1.5)).expand(1.0), CornerRadius::same(2), t.shadow);
