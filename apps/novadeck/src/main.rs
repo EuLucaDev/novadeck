@@ -140,7 +140,7 @@ fn main() -> eframe::Result {
     let mut files = Vec::new();
     let mut sample = false;
     let mut show = false;
-    let mut args = std::env::args().skip(1);
+    let mut args = std::env::args().skip(1).filter(|arg| !novadeck_ui_egui::live_ui::is_invite_arg(arg));
     while let Some(a) = args.next() {
         match a.as_str() {
             "--control" => control_port = args.next().and_then(|p| p.parse().ok()),
@@ -196,6 +196,7 @@ fn main() -> eframe::Result {
         options,
         Box::new(move |cc| {
             let mut app = SlideApp::new(Session::new(), services());
+            app.live.pending_join = novadeck_ui_egui::live_ui::launch_invite();
             load_prefs(&mut app);
             // AutoRecover: reopen what a previous run left unsaved, then keep it current.
             if std::env::var_os("NOVADECK_NO_RECOVERY").is_none() {

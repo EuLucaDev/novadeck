@@ -13,6 +13,7 @@ pub mod fonts;
 pub mod guard;
 pub mod keys;
 pub mod links;
+pub mod live;
 pub mod recovery;
 pub mod sample;
 pub mod tools;
@@ -351,6 +352,8 @@ pub struct Session {
     /// ends) instead of Windows and Linux (Ctrl+arrows by word or paragraph). Defaults to the
     /// platform Nova Deck was built for.
     pub mac_keys: bool,
+    /// Colaboração em tempo real (Nova Live), ver `live`.
+    pub live: live::LiveState,
 }
 
 impl Default for Session {
@@ -379,6 +382,7 @@ impl Session {
             media_status: Default::default(),
             gif_paused: Default::default(),
             mac_keys: cfg!(target_os = "macos"),
+            live: live::LiveState::default(),
         }
     }
     /// A session with one new presentation open.
@@ -449,6 +453,7 @@ impl Session {
         }
         let before = self.active().map(|d| (d.uid, d.doc.clone(), d.selection.clone()));
         let outer = self.depth == 0;
+        let live_ctx = (outer && self.live.doc.is_some()).then(|| self.active().map(|d| live::context(&d.selection))).flatten();
         self.depth += 1;
         let r = (spec.run)(self, params);
         self.depth -= 1;
@@ -464,6 +469,10 @@ impl Session {
             && outer
         {
             push_undo(st, HistoryEntry { label: spec.label.to_string(), doc: old, selection: sel });
+        }
+        if let Some(ctx) = live_ctx {
+            let replicable = spec.undoable && self.active().is_some_and(|d| d.interaction.is_none());
+            self.live_record(id, params, replicable, ctx);
         }
         if spec.journal && outer {
             self.journal.push((id.to_string(), params.clone()));
@@ -517,7 +526,7 @@ impl Session {
 }
 
 /// Keep the selection pointing at things that exist.
-fn clamp_selection(st: &mut DocState) {
+pub(crate) fn clamp_selection(st: &mut DocState) {
     let n = st.doc.slides.len();
     if n == 0 {
         st.selection.slide = 0;

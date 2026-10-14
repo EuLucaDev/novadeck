@@ -75,6 +75,8 @@ pub fn title_bar(app: &mut SlideApp, ui: &mut Ui) {
         if icon_toggle(&mut right, Icon::Search, "Search commands (⇧⌘P)", true, false).clicked() {
             app.palette = Some((String::new(), 0));
         }
+        #[cfg(not(target_arch = "wasm32"))]
+        crate::live_ui::button(app, &mut right);
         let share = right.add(
             egui::Button::new(egui::RichText::new("  Present  ").color(t.accent_text).font(theme::bold(13.0)))
                 .fill(t.accent)

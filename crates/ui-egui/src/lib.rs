@@ -7,6 +7,8 @@
 #![forbid(unsafe_code)]
 
 pub mod backstage;
+#[cfg(not(target_arch = "wasm32"))]
+pub mod live_ui;
 pub mod canvas;
 pub mod control;
 pub mod credits;
@@ -227,12 +229,17 @@ pub struct SlideApp {
     pub(crate) thumb_drag: Option<(usize, usize)>,
     /// Selection pane: folded groups, renaming, drag and drop.
     pub selpane: selpane::State,
+    /// Colaboração em tempo real (Nova Live).
+    #[cfg(not(target_arch = "wasm32"))]
+    pub live: live_ui::LiveUi,
 }
 
 impl SlideApp {
     pub fn new(session: Session, mut services: Services) -> Self {
         let audio_out = services.audio_out.take();
         SlideApp {
+            #[cfg(not(target_arch = "wasm32"))]
+            live: live_ui::LiveUi::default(),
             session,
             services,
             ui: UiState::default(),
@@ -928,6 +935,8 @@ impl SlideApp {
     /// Lay out the whole window.
     pub fn ui(&mut self, ui: &mut egui::Ui) {
         let ctx = ui.ctx().clone();
+        #[cfg(not(target_arch = "wasm32"))]
+        live_ui::pump(self, &ctx);
         if !self.fonts_ready {
             ctx.request_repaint();
             return;
@@ -979,6 +988,8 @@ impl SlideApp {
             }
         });
         toast::note_missing_fonts(self);
+        #[cfg(not(target_arch = "wasm32"))]
+        live_ui::window(self, &ctx);
         toast::show(self, &ctx);
         dialogs::show(self, &ctx);
         menus::palette(self, &ctx);
