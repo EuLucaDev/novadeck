@@ -241,6 +241,9 @@ pub fn handle(app: &mut SlideApp, ctx: &egui::Context, req: &ControlRequest) -> 
             if let Some(d) = p.get("dark").and_then(Value::as_bool) {
                 let _ = app.run("view.dark", json!({"on": d}));
             }
+            if let Some(name) = p.get("theme").and_then(Value::as_str) {
+                let _ = app.run("view.theme", json!({"theme": name}));
+            }
             if let Some(n) = p.get("notes").and_then(Value::as_bool) {
                 app.ui.notes = n;
             }

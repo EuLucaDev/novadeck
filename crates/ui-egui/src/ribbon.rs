@@ -90,14 +90,8 @@ pub fn title_bar(app: &mut SlideApp, ui: &mut Ui) {
         if icon_toggle(&mut right, Icon::CommentsBubble, "Comments", has_doc, app.ui.pane.as_deref() == Some("comments")).clicked() {
             let _ = app.run("view.pane", json!({"pane": "comments", "toggle": true}));
         }
-        if icon_toggle(
-            &mut right,
-            if app.ui.brightness == theme::Brightness::Dark { Icon::Sparkle } else { Icon::Palette },
-            "Light/Dark appearance",
-            true,
-            false,
-        )
-        .clicked()
+        if icon_toggle(&mut right, if app.ui.brightness.is_dark() { Icon::Sparkle } else { Icon::Palette }, "Light/Dark appearance", true, false)
+            .clicked()
         {
             let _ = app.run("view.dark", json!({}));
         }
@@ -1867,7 +1861,7 @@ fn view(app: &mut SlideApp, ui: &mut Ui) {
         if big_button_ex(ui, Icon::Grayscale, "Grayscale", true, false, gs).0.clicked() {
             app.ui.grayscale = !gs;
         }
-        let dark = app.ui.brightness == theme::Brightness::Dark;
+        let dark = app.ui.brightness.is_dark();
         if big_button_ex(ui, Icon::Palette, "Dark\nMode", true, false, dark).0.clicked() {
             let _ = app.run("view.dark", json!({}));
         }

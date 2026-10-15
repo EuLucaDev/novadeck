@@ -9,6 +9,43 @@ pub enum Brightness {
     #[default]
     Light,
     Dark,
+    /// One of the Nova Foods suite themes (Nova Photo's fourteen, from `nova-themes`).
+    Suite(nova_themes::ThemeKind),
+}
+
+impl Brightness {
+    /// Every choice the Appearance list offers: Light, Dark, then the suite themes.
+    pub fn menu() -> Vec<Brightness> {
+        [Brightness::Light, Brightness::Dark].into_iter().chain(nova_themes::ThemeKind::ALL.into_iter().map(Brightness::Suite)).collect()
+    }
+    pub fn label(self) -> &'static str {
+        match self {
+            Brightness::Light => "Light",
+            Brightness::Dark => "Dark",
+            Brightness::Suite(kind) => kind.label(),
+        }
+    }
+    pub fn id(self) -> &'static str {
+        match self {
+            Brightness::Light => "light",
+            Brightness::Dark => "dark",
+            Brightness::Suite(kind) => kind.id(),
+        }
+    }
+    pub fn parse(s: &str) -> Option<Self> {
+        match s.trim().to_ascii_lowercase().as_str() {
+            "light" => Some(Brightness::Light),
+            "dark" => Some(Brightness::Dark),
+            _ => nova_themes::ThemeKind::from_name(s).map(Brightness::Suite),
+        }
+    }
+    pub fn is_dark(self) -> bool {
+        match self {
+            Brightness::Light => false,
+            Brightness::Dark => true,
+            Brightness::Suite(kind) => kind.is_dark(),
+        }
+    }
 }
 
 /// Every colour the chrome uses.
@@ -105,15 +142,57 @@ impl Tokens {
         match b {
             Brightness::Light => Self::light(),
             Brightness::Dark => Self::dark(),
+            Brightness::Suite(kind) => Self::for_suite(kind),
         }
     }
     pub fn get(ctx: &egui::Context) -> Self {
+        if let Some(t) = ctx.data(|d| d.get_temp::<Tokens>(tokens_id())) {
+            return t;
+        }
         if ctx.global_style().visuals.dark_mode { Self::dark() } else { Self::light() }
     }
+
+    /// A suite theme paints the chrome (window, ribbon, panes, fields, text, accent); the slide,
+    /// its selection, handles and guides keep Nova Deck's own colours.
+    pub fn for_suite(kind: nova_themes::ThemeKind) -> Self {
+        let p = kind.palette();
+        let dark = kind.is_dark();
+        let base = if dark { Self::dark() } else { Self::light() };
+        Tokens {
+            dark,
+            chrome: rgba(p.chrome),
+            card: rgba(p.card),
+            card_border: rgba(p.card_border),
+            canvas: rgba(p.canvas),
+            text: rgba(p.text),
+            text_dim: rgba(p.text_dim),
+            text_faint: rgba(p.text_faint),
+            border: rgba(p.field_border),
+            separator: rgba(p.separator),
+            hover: rgba(p.hover),
+            pressed: rgba(p.pressed),
+            selected: rgba(p.row_selected),
+            accent: rgba(p.accent),
+            accent_text: rgba(p.primary_text),
+            contextual: rgba(nova_themes::mix(p.accent, if dark { [255, 255, 255, 255] } else { [0, 0, 0, 255] }, 0.15)),
+            field_bg: rgba(p.field),
+            shadow: rgba(p.shadow),
+            ..base
+        }
+    }
+}
+
+fn rgba(c: nova_themes::Rgba) -> Color32 {
+    Color32::from_rgba_unmultiplied(c[0], c[1], c[2], c[3])
+}
+
+fn tokens_id() -> egui::Id {
+    egui::Id::new("novadeck-tokens")
 }
 
 /// Apply tokens to egui's style.
 pub fn apply(ctx: &egui::Context, t: &Tokens) {
+    ctx.data_mut(|d| d.insert_temp(tokens_id(), *t));
     let mut v = if t.dark { Visuals::dark() } else { Visuals::light() };
     v.panel_fill = t.chrome;
     v.window_fill = t.card;

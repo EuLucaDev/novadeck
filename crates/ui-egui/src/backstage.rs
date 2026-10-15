@@ -1201,11 +1201,14 @@ fn account(app: &mut SlideApp, ui: &mut Ui) {
         ui.vertical(|ui| {
             ui.set_width(340.0);
             heading(ui, "Appearance");
-            let dark = app.ui.brightness == theme::Brightness::Dark;
-            egui::ComboBox::from_id_salt("backstage_appearance").width(260.0).selected_text(if dark { "Dark" } else { "Light" }).show_ui(ui, |ui| {
-                for (on, label) in [(false, "Light"), (true, "Dark")] {
-                    if ui.selectable_label(dark == on, label).clicked() {
-                        let _ = app.run("view.dark", json!({"on": on}));
+            let current = app.ui.brightness;
+            egui::ComboBox::from_id_salt("backstage_appearance").width(260.0).selected_text(current.label()).show_ui(ui, |ui| {
+                for b in theme::Brightness::menu() {
+                    if matches!(b, theme::Brightness::Suite(nova_themes::ThemeKind::Pro)) {
+                        ui.separator();
+                    }
+                    if ui.selectable_label(current == b, b.label()).clicked() {
+                        let _ = app.run("view.theme", json!({"theme": b.id()}));
                     }
                 }
             });

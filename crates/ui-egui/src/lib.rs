@@ -155,6 +155,12 @@ pub const UI_COMMANDS: &[(&str, &str, Option<&str>, &str)] = &[
     ("view.tab", "Ribbon Tab", None, "{tab}"),
     ("view.collapseRibbon", "Collapse the Ribbon", Some("Cmd+F1"), "{}"),
     ("view.dark", "Dark Mode", None, "{on?: bool}"),
+    (
+        "view.theme",
+        "Interface Theme",
+        None,
+        "{theme: light|dark|<suite theme id: pro, proMedium, proLightGray, proLight, studio, studioLight, classic, solarizedDark, adwaita, adwaitaDark, breezeLight, breezeDark, softDark, softLight>}",
+    ),
     ("view.grayscale", "Grayscale", None, "{on?: bool}"),
     ("show.start", "Slide Show", Some("F5"), "{from?: index}"),
     ("show.presenter", "Presenter View", None, "{on?: bool}"),
@@ -498,8 +504,14 @@ impl SlideApp {
             }
             "view.collapseRibbon" => self.ui.ribbon_collapsed = !self.ui.ribbon_collapsed,
             "view.dark" => {
-                let on = self.flag(p, self.ui.brightness == theme::Brightness::Dark);
+                let on = self.flag(p, self.ui.brightness.is_dark());
                 self.ui.brightness = if on { theme::Brightness::Dark } else { theme::Brightness::Light };
+                self.restyle = true;
+            }
+            "view.theme" => {
+                let name = p.get("theme").and_then(Value::as_str).ok_or("missing `theme`: light, dark or a suite theme id")?;
+                self.ui.brightness =
+                    theme::Brightness::parse(name).ok_or("unknown theme: use light, dark or a suite theme id (studio, proMedium, classic…)")?;
                 self.restyle = true;
             }
             "view.grayscale" => self.ui.grayscale = self.flag(p, self.ui.grayscale),
