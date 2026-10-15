@@ -2524,7 +2524,7 @@ checksum = "2bf50223579dc7cdcfb3bfcacf7069ff68243f8c363f62ffa99cf000a6b9c451"
 [[package]]
 name = "nova-account-ui"
 version = "0.1.0"
-source = "git+https://github.com/EuLucaDev/nova-live?rev=25720ad8a7aa8cc6e10ffd13091bd69873d9fd95#25720ad8a7aa8cc6e10ffd13091bd69873d9fd95"
+source = "git+https://github.com/EuLucaDev/nova-live?rev=d0c50673eb1b525c3efbfda72e33bdeb4569e1e7#d0c50673eb1b525c3efbfda72e33bdeb4569e1e7"
 dependencies = [
  "egui",
  "image",
@@ -2534,7 +2534,7 @@ dependencies = [
 [[package]]
 name = "nova-live"
 version = "0.1.0"
-source = "git+https://github.com/EuLucaDev/nova-live?rev=25720ad8a7aa8cc6e10ffd13091bd69873d9fd95#25720ad8a7aa8cc6e10ffd13091bd69873d9fd95"
+source = "git+https://github.com/EuLucaDev/nova-live?rev=d0c50673eb1b525c3efbfda72e33bdeb4569e1e7#d0c50673eb1b525c3efbfda72e33bdeb4569e1e7"
 dependencies = [
  "base64 0.22.1",
  "getrandom 0.4.3",
@@ -2551,7 +2551,7 @@ dependencies = [
 [[package]]
 name = "nova-live-macos"
 version = "0.1.0"
-source = "git+https://github.com/EuLucaDev/nova-live?rev=25720ad8a7aa8cc6e10ffd13091bd69873d9fd95#25720ad8a7aa8cc6e10ffd13091bd69873d9fd95"
+source = "git+https://github.com/EuLucaDev/nova-live?rev=d0c50673eb1b525c3efbfda72e33bdeb4569e1e7#d0c50673eb1b525c3efbfda72e33bdeb4569e1e7"
 dependencies = [
  "objc2 0.6.5",
  "objc2-foundation 0.3.2",
@@ -2560,14 +2560,14 @@ dependencies = [
 [[package]]
 name = "nova-themes"
 version = "0.1.0"
-source = "git+https://github.com/EuLucaDev/nova-live?rev=09fedc5f70f977109e5d76c4e89db37e0f54ee50#09fedc5f70f977109e5d76c4e89db37e0f54ee50"
+source = "git+https://github.com/EuLucaDev/nova-live?rev=d0c50673eb1b525c3efbfda72e33bdeb4569e1e7#d0c50673eb1b525c3efbfda72e33bdeb4569e1e7"
 dependencies = [
  "serde",
 ]
 
 [[package]]
 name = "novadeck"
-version = "0.9.1"
+version = "0.10.0"
 dependencies = [
  "arboard",
  "cpal",
@@ -2586,7 +2586,7 @@ dependencies = [
 
 [[package]]
 name = "novadeck-anim"
-version = "0.9.1"
+version = "0.10.0"
 dependencies = [
  "novadeck-geom",
  "novadeck-model",
@@ -2595,7 +2595,7 @@ dependencies = [
 
 [[package]]
 name = "novadeck-av1"
-version = "0.9.1"
+version = "0.10.0"
 dependencies = [
  "novadeck-bitstream",
  "rayon",
@@ -2604,14 +2604,14 @@ dependencies = [
 
 [[package]]
 name = "novadeck-bitstream"
-version = "0.9.1"
+version = "0.10.0"
 dependencies = [
  "proptest",
 ]
 
 [[package]]
 name = "novadeck-cli"
-version = "0.9.1"
+version = "0.10.0"
 dependencies = [
  "novadeck-engine",
  "novadeck-mcp",
@@ -2620,14 +2620,14 @@ dependencies = [
 
 [[package]]
 name = "novadeck-color"
-version = "0.9.1"
+version = "0.10.0"
 dependencies = [
  "serde",
 ]
 
 [[package]]
 name = "novadeck-engine"
-version = "0.9.1"
+version = "0.10.0"
 dependencies = [
  "i_overlay",
  "image",
@@ -2649,7 +2649,7 @@ dependencies = [
 
 [[package]]
 name = "novadeck-fonts"
-version = "0.9.1"
+version = "0.10.0"
 dependencies = [
  "epaint_default_fonts",
  "harfrust 0.13.3",
@@ -2661,7 +2661,7 @@ dependencies = [
 
 [[package]]
 name = "novadeck-format"
-version = "0.9.1"
+version = "0.10.0"
 dependencies = [
  "novadeck-model",
  "serde",
@@ -2672,7 +2672,7 @@ dependencies = [
 
 [[package]]
 name = "novadeck-geom"
-version = "0.9.1"
+version = "0.10.0"
 dependencies = [
  "kurbo",
  "serde",
@@ -2680,7 +2680,7 @@ dependencies = [
 
 [[package]]
 name = "novadeck-h264"
-version = "0.9.1"
+version = "0.10.0"
 dependencies = [
  "novadeck-bitstream",
  "rayon",
@@ -2689,7 +2689,7 @@ dependencies = [
 
 [[package]]
 name = "novadeck-hevc"
-version = "0.9.1"
+version = "0.10.0"
 dependencies = [
  "novadeck-bitstream",
  "rayon",
@@ -2698,7 +2698,7 @@ dependencies = [
 
 [[package]]
 name = "novadeck-isobmff"
-version = "0.9.1"
+version = "0.10.0"
 dependencies = [
  "novadeck-bitstream",
  "thiserror 2.0.21",
@@ -2706,11 +2706,11 @@ dependencies = [
 
 [[package]]
 name = "novadeck-matroska"
-version = "0.9.1"
+version = "0.10.0"
 
 [[package]]
 name = "novadeck-mcp"
-version = "0.9.1"
+version = "0.10.0"
 dependencies = [
  "log",
  "novadeck-engine",
@@ -2720,7 +2720,7 @@ dependencies = [
 
 [[package]]
 name = "novadeck-media"
-version = "0.9.1"
+version = "0.10.0"
 dependencies = [
  "image",
  "log",
@@ -2738,7 +2738,7 @@ dependencies = [
 
 [[package]]
 name = "novadeck-metafile"
-version = "0.9.1"
+version = "0.10.0"
 dependencies = [
  "kurbo",
  "thiserror 2.0.21",
@@ -2746,7 +2746,7 @@ dependencies = [
 
 [[package]]
 name = "novadeck-model"
-version = "0.9.1"
+version = "0.10.0"
 dependencies = [
  "novadeck-color",
  "novadeck-geom",
@@ -2758,15 +2758,15 @@ dependencies = [
 
 [[package]]
 name = "novadeck-ogg"
-version = "0.9.1"
+version = "0.10.0"
 
 [[package]]
 name = "novadeck-opus"
-version = "0.9.1"
+version = "0.10.0"
 
 [[package]]
 name = "novadeck-pdf"
-version = "0.9.1"
+version = "0.10.0"
 dependencies = [
  "krilla",
  "kurbo",
@@ -2781,7 +2781,7 @@ dependencies = [
 
 [[package]]
 name = "novadeck-pptx"
-version = "0.9.1"
+version = "0.10.0"
 dependencies = [
  "image",
  "log",
@@ -2797,7 +2797,7 @@ dependencies = [
 
 [[package]]
 name = "novadeck-render"
-version = "0.9.1"
+version = "0.10.0"
 dependencies = [
  "image",
  "kurbo",
@@ -2816,7 +2816,7 @@ dependencies = [
 
 [[package]]
 name = "novadeck-text"
-version = "0.9.1"
+version = "0.10.0"
 dependencies = [
  "chrono",
  "novadeck-color",
@@ -2830,7 +2830,7 @@ dependencies = [
 
 [[package]]
 name = "novadeck-ui-egui"
-version = "0.9.1"
+version = "0.10.0"
 dependencies = [
  "egui",
  "egui_kittest",
@@ -2855,7 +2855,7 @@ dependencies = [
 
 [[package]]
 name = "novadeck-vp9"
-version = "0.9.1"
+version = "0.10.0"
 dependencies = [
  "novadeck-bitstream",
  "rayon",
@@ -2864,7 +2864,7 @@ dependencies = [
 
 [[package]]
 name = "novadeck-web"
-version = "0.9.1"
+version = "0.10.0"
 dependencies = [
  "eframe",
  "egui",
@@ -6070,7 +6070,7 @@ checksum = "9440ea3e5aeabb0ac63af70daf835274065238cdd0cec83418f417eae38bacee"
 
 [[package]]
 name = "xtask"
-version = "0.9.1"
+version = "0.10.0"
 dependencies = [
  "serde_json",
 ]
